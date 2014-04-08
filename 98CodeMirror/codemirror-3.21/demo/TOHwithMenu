@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="write your description here.">
+
+    <title>Recursion</title>
+
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+     
+
+    <link rel="stylesheet" href="../doc/docstest.css">
+    <title>Recursion Demo</title>
+    <link rel="icon"  type="image/x-icon" href="./favicon.ico"/>
+
+
+    <!-- Codemirror setup -->
+    <link rel="stylesheet" href="../addon/lint/lint.css">
+    <link rel="stylesheet" href="../lib/codemirror.css">
+    <link rel="stylesheet" href="../theme/neat.css">
+
+    <script src="../lib/codemirror.js"></script>
+    <script src="../mode/javascript/javascript.js"></script>
+    <script src="../keymap/extra.js"></script>
+    <script src="../addon/selection/active-line.js"></script>
+    <script src="../addon/edit/matchbrackets.js"></script>
+    <script src="../mode/css/css.js"></script>
+ 
+    <!-- JSHint setup -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
+    <script src="https://rawgithub.com/zaach/jsonlint/79b553fb65c192add9066da64043458981b3972b/lib/jsonlint.js"></script>
+    <script src="https://rawgithub.com/stubbornella/csslint/master/release/csslint.js"></script>
+    <script src="../addon/lint/lint.js"></script>
+    <script src="../addon/lint/javascript-lint.js"></script>
+    <script src="../addon/lint/json-lint.js"></script>
+    <script src="../addon/lint/css-lint.js"></script>
+
+</head>
+<body>
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Recursion</a>
+
+            <ul>
+                <li class="menu-item-divided pure-menu-selected">
+                    <a href="./introduction.html">Introduction</a>
+                </li>
+                <li><a href="./factorials.html">Example: Factorials</a></li>
+                <li><a href="./palindromes.html">Example: Palindromes</a></li>
+                <li><a href="./98CodeMirror/codemirror-3.21/demo/TohWithCode.html">Challenge: Towers of Hanoi</a></li>
+                <li><a href="./mergesort.html">Challenge: Merge Sort</a></li>
+                <li><a href="./whyrecursion.html">Why Recursion?</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>What is Recursion?</h1>
+        </div>
+
+        <div class="content">
+            <h2 class="content-subhead"></h2>
+            <p>
+                Recursion is the technique of solving a large problem by breaking it down into smaller sub-problems of the same kind. More precisely, it consists of what we call a <b>base case</b> and a <b>recursive case</b>.
+            </p>
+            
+            <img class="pure-img-responsive" align="middle" src="./img/fractal_pyramid.jpg" alt="Fractal">
+
+        </div>
+    </div>
+</div>
+
+
+<script src="js/ui.js"></script>
+
+
+</body>
+</html>

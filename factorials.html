@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+
+    <title>Recursion: Factorials</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+     
+    <!-- Codemirror setup -->
+    <link rel="stylesheet" href="98CodeMirror/codemirror-3.21/addon/lint/lint.css">
+    <link rel="stylesheet" href="98CodeMirror/codemirror-3.21/lib/codemirror.css">
+    <link rel="stylesheet" href="98CodeMirror/codemirror-3.21/theme/neat.css">
+    <script src="98CodeMirror/codemirror-3.21/lib/codemirror.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/mode/javascript/javascript.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/keymap/extra.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/selection/active-line.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/edit/matchbrackets.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/mode/css/css.js"></script>
+
+    <!-- JSHint setup -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
+    <script src="https://rawgithub.com/zaach/jsonlint/79b553fb65c192add9066da64043458981b3972b/lib/jsonlint.js"></script>
+    <script src="https://rawgithub.com/stubbornella/csslint/master/release/csslint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/lint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/javascript-lint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/json-lint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/css-lint.js"></script>
+
+</head>
+<body>
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Recursion</a>
+
+            <ul>
+                <li><a href="./introduction.html">Introduction</a></li>
+                <li class="menu-item-divided pure-menu-selected">
+                    <a href="./factorials.html">Example: Factorials</a>
+                </li>
+                <li><a href="./palindromes.html">Example: Palindromes</a></li>
+                <li><a href="./98CodeMirror/codemirror-3.21/demo/TohWithCode.html">Challenge: Towers of Hanoi</a></li>
+                <li><a href="./mergesort.html">Challenge: Merge Sort</a></li>
+                <li><a href="./whyrecursion.html">Why Recursion?</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>Example: Factorials</h1>
+        </div>
+
+        <div class="content">
+            <h2 class="content-subhead"></h2>
+           
+
+            <h2 class="content-subhead"></h2>
+            <p>
+                As an example, consider factorials. <b>Factorials</b> are defined by two properties:
+
+            <p><t>1. 0! = 1</t></p>
+            <p><t>2. n! = n * (n-1) * (n-2) * (n-3) * ... * 3  * 2 * 1</t></p>
+            <p><t>where n is any non-negative (positive or 0) integer</t></p>
+
+            <p>
+
+                Note that a factorial is denoted with an ! sign. More concretely, take 5! = 5 * 4 * 3 * 2 * 1. It's important to recognize that this expression can also be written as 5! = 5 * 4!.
+
+                Let's take a look at a function to solve a factorial:
+            </p>
+
+            <style type="text/css">
+                .CodeMirror {
+                border: 2px solid #E0E0E0; 
+                font-size:15px;
+                height: auto;
+                viewportMargin: 10;
+              }
+         
+            </style>
+
+
+        <article style="width: 700px; height: 600px;">
+        <div><textarea id="codeInputPane" name="code" runnable="true" mode="javascript">
+function factorial(n) {
+
+    if (n == 0) {
+        console.log("Reached base case");
+        return 1;
+
+    } else {
+        console.log("Calculating "+n+"! = "+n+" * ("+n+"-1)!");
+        return n * factorial(n-1);
+    }
+
+}
+        
+var ans = factorial(5);
+console.log("ANSWER: " + ans);
+        
+               
+        </textarea>
+        </div>
+
+        <p><button type=button onclick="run()">run</button></p>
+
+        <script type = "text/javascript" >
+      
+            // convenience function to get the id attribute of generated sketch html element
+            var processingInstance = function getProcessingSketchId () { return 'toh'; }
+            
+            var editor = CodeMirror.fromTextArea(document.getElementById("codeInputPane"), {
+            mode: "javascript",
+            theme: "neat",
+            autofocus: true,
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            gutters: ["CodeMirror-lint-markers"],
+            lint: true
+            });
+            
+         
+            function run(){
+                var content = editor.getValue();        
+                var result = eval(content);
+                var logOfConsole = [];
+
+                var _log = console.log,
+                _warn = console.warn,
+                _error = console.error;
+
+                function outputArguments(arguments, type)
+                {
+                outputBox = document.getElementById('demo');
+                for(i in arguments)
+                {
+                    if(type == 0)
+                    {
+                    outputBox.innerHTML += '<p class="consoleLog">'+(arguments[i])+'</p>';
+                    }
+                    else if (type == 1)
+                    {
+                    outputBox.innerHTML += '<p class="consoleWarn">'+(arguments[i])+'</p>'; 
+                    }
+                    else
+                    {
+                    outputBox.innerHTML += '<p class="consoleError">'+(arguments[i])+'</p>';
+                    }
+                }
+            }
+
+            console.log = function() {
+                outputArguments(arguments, 0);
+                logOfConsole.push({method: 'log', arguments:arguments});
+                return _log.apply(console, arguments);
+            };
+
+            console.warn = function() {
+                outputArguments(arguments, 1);
+                logOfConsole.push({method: 'warn', arguments: arguments});
+                return _warn.apply(console, arguments);
+            };
+
+            console.error = function() {
+                outputArguments(arguments, 2);
+                logOfConsole.push({method: 'error', arguments: arguments});
+                return _error.apply(console, arguments);
+            };
+
+            window.onerror = function (msg, url, line) {
+                console.error("Caught[via window.onerror]: '" + msg + "' from " + url + ":" + line);
+                return true; // same as preventDefault
+                };
+                
+            }
+          
+            </script>
+            
+            <div id="demo"  style="width:10;height:10;overflow-y:scroll"></div>
+            </article>
+
+
+
+
+            <p>
+                This is called a <b>recursive function</b> because it calls itself. As you can see, it also consists of a base case and a recursive case. Here, the base case is when n = 0 because we know 0! = 1. In fact, we also know that 1! = 1 * 0! = 1, so we could've written our base case with the condition that n (less than or)= 1. The recursive case, on the other hand, is when n > 1 because we then we can rewrite it as n * (n-1)!.
+
+                You might notice that this function could also have been written iteratively, using a for loop; however, this is not always possible, as we will see later.
+
+                If we call this function with value n = 5, the call stack (all the function calls to perform this computation) looks like the following:
+            </p>
+
+            <p style="color:#1f8dd6">* TODO: animated function calls</p>
+
+            <pre class="code" data-language="javascript"><code>
+            factorial(5) calls factorial(4) // 5 * 4!
+                factorial(4) calls factorial(3) // 5 * 4 * 3!
+                    factorial(3) calls factorial(2) // 5 * 4 * 3 * 2!
+                        factorial(2) calls factorial(1) // 5 * 4 * 3 * 2 * 1!
+                            factorial(1) calls factorial(0) // 5 * 4 * 3 * 2 *1*0!
+                                factorial(0) returns 1 // 5 * 4 * 3 * 2 * 1 * 1
+                            factorial(1) returns 1 // 5 * 4 * 3 * 2 * 1
+                        factorial(2) returns 2 // 5 * 4 * 3 * 2
+                    factorial(3) returns 6 // 5 * 4 * 6
+                factorial(4) returns 24 // 5 * 25
+            factorial(5) returns 120 // 120
+            </code></pre>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="js/ui.js"></script>
+
+
+</body>
+</html>

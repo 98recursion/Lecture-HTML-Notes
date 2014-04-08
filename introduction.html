@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="write your description here.">
+
+    <title>Recursion</title>
+
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+     
+
+</head>
+<body>
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Recursion</a>
+
+            <ul>
+                <li class="menu-item-divided pure-menu-selected">
+                    <a href="./introduction.html">Introduction</a>
+                </li>
+                <li><a href="./factorials.html">Example: Factorials</a></li>
+                <li><a href="./palindromes.html">Example: Palindromes</a></li>
+                <li><a href="./98CodeMirror/codemirror-3.21/demo/TohWithCode.html">Challenge: Towers of Hanoi</a></li>
+                <li><a href="./mergesort.html">Challenge: Merge Sort</a></li>
+                <li><a href="./whyrecursion.html">Why Recursion?</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>What is Recursion?</h1>
+        </div>
+
+        <div class="content">
+            <h2 class="content-subhead"></h2>
+            <p>
+                Recursion is the technique of solving a large problem by breaking it down into smaller sub-problems of the same kind. More precisely a <b>Recursive Algorithm</b> consists of what we call a <b>base case</b> and a <b>recursive case</b>.
+            </p>
+            <p> 
+                <b>Base Case: </b>the case for which the solution is can be stated non-recursively. The base case, or halting case, of a function is the problem that we know the answer to, that can be solved without any more recursive calls. The base case is what stops the recursion from continuing on forever. Every recursive function must have at least one base case (many functions have more than one). 
+            </p>
+            <p> 
+                <b>Recursive Case: </b>the case for which the solution is expressed in terms of a smaller version of itself. Also called the general case.
+            </p>
+
+            <p> 
+                <b>There are three questions you should verify when writing a recurisve algorithm: </b>
+            </p>
+            <p>
+                Base Case Question: Is there a non-recursive way out of the function?
+            </p>
+            <p>
+                Reducing Problem: Does each recursive call involve a smaller case of the original problem that will eventually reach the base case?
+            </p>
+            <p>
+                General Case Question: More obviously, assuming each recursive call works correctly, does the whole function work correctly?
+            </p>
+            
+            
+            <img class="pure-img-responsive" align="middle" src="./img/fractal_pyramid.jpg" alt="Fractal">
+
+            <p style="color:#1f8dd6"><b>Recursive Call: </b>a method call in which the method being called is the same as the one making the call.</p>
+            
+            <p style="color:#1f8dd6"><b>Direct Recursion: </b>Recursion in which a method directly calls itself (palindrome, factorial).</p>
+
+            <p style="color:#1f8dd6"><b>There are other types of recursion too ...indirect recursion, tail, binary, mutual </b></p>
+
+            <p style="color:#1f8dd6"><b>Recursion and the Call Stack: </b>Recursive functions often use a good deal of memory and stack space during their operation. The stack space is the memory set aside for a program to use to keep track of all of the functions and their local states currently in the middle of execution.</p>
+
+            <p style="color:#1f8dd6"><b>Circularity, Infinite recursion, making sure we reach the base case </b> Each recursive algrithm must bring you closer to the answer. circularity = a recursive function being called with the same arguments as a previous call, leading to an endless cycle of recursion.</p>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="js/ui.js"></script>
+
+
+</body>
+</html>

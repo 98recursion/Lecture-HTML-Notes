@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+
+    <title>Recursion: Palindromes</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+     
+    <!-- Codemirror setup -->
+    <link rel="stylesheet" href="98CodeMirror/codemirror-3.21/addon/lint/lint.css">
+    <link rel="stylesheet" href="98CodeMirror/codemirror-3.21/lib/codemirror.css">
+    <link rel="stylesheet" href="98CodeMirror/codemirror-3.21/theme/neat.css">
+    <script src="98CodeMirror/codemirror-3.21/lib/codemirror.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/mode/javascript/javascript.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/keymap/extra.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/selection/active-line.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/edit/matchbrackets.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/mode/css/css.js"></script>
+
+    <!-- JSHint setup -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
+    <script src="https://rawgithub.com/zaach/jsonlint/79b553fb65c192add9066da64043458981b3972b/lib/jsonlint.js"></script>
+    <script src="https://rawgithub.com/stubbornella/csslint/master/release/csslint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/lint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/javascript-lint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/json-lint.js"></script>
+    <script src="98CodeMirror/codemirror-3.21/addon/lint/css-lint.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Recursion</a>
+
+            <ul>
+                <li><a href="./introduction.html">Introduction</a></li>
+                <li><a href="./factorials.html">Example: Factorials</a></li>
+                <li class="menu-item-divided pure-menu-selected">
+                    <a href="./palindromes.html">Example: Palindromes</a>
+                </li>
+                <li><a href="./98CodeMirror/codemirror-3.21/demo/TohWithCode.html">Challenge: Towers of Hanoi</a></li>
+                <li><a href="./mergesort.html">Challenge: Merge Sort</a></li>
+                <li><a href="./whyrecursion.html">Why Recursion?</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>Example: Palindromes</h1>
+        </div>
+
+        <div class="content">
+       
+        <p>
+            Let's take a look at another recursive function. In this case, we want to evaluate whether a word is a palindrome. A <b>palindrome</b> is a word, phrase, or number that's the same when written backwards and forwards. For example, the names "hannah" and "bob."
+        </p>
+
+        <p>
+            Now, how do we approach a problem like this recursively? How do we break the problem of whether "hannah" is a palindrome into smaller sub-problems? Consider one approach where we evaluate one letter at a time on either side of the word. That is, in order to determine whether "hannah" is a palindrome, we first analyze whether there's an "h" at both the beginning and the end, and then check whether "anna" is a palindrome 
+        </p>
+
+        <p style="color:#1f8dd6">* TODO: shrinking palindrome animation</p>
+
+        <p>
+            Now that we've figured out the recursive case, what's the base case? A trick to figure this out is to consider the smallest possible problem that we can't break up into anything smaller. It's also a problem we can solve directly, which doesn't require another <b>recursive call</b>, or call to the recursive function. Here, it can also be helpful to look at an example. If we continue slicing off letters from "hannah", we go from "hannah" to "anna" to "nn" to "". So, what do we do when we reach "". Well, there're no more letters, so we can't make another recursive call, so this must be a base case. But wait, what about "bob." Here, we go from "bob", to "o", and again we can't make another recursive call, so this must also be a base case.
+        </p>
+
+        <p>
+            Now that we understand how to approach this problem, let's try to formalize it in a function.
+        </p>
+
+            
+
+
+        <style type="text/css">
+          .CodeMirror {
+            
+            border: 2px solid #E0E0E0; 
+            font-size:15px;
+            height: auto;
+            viewportMargin: 10;
+          }
+         
+        </style>
+
+
+        <article style="width: 700px; height: 600px;">
+        <div><textarea id="codeInputPane" name="code" runnable="true" mode="javascript">
+function is_palindrome(word) {
+    console.log("Checking if " + word + " is a palindrome...");
+    
+    if (word.length <= 1) {
+        console.log("It is a palindrome!");
+        return true;
+    } 
+
+    else {
+        if (word.charAt(0) == word.charAt(word.length-1)) {
+            return is_palindrome(word.substring(1, word.length-1));                
+        } 
+
+        else {
+            console.log("It is not a palindrome.");
+            return false;
+        }
+    }
+}
+
+is_palindrome('hannah');
+        
+          
+        </textarea>
+        </div>
+
+        <p><button type=button onclick="run()">run</button></p>
+
+        <script type = "text/javascript" >
+      
+            // convenience function to get the id attribute of generated sketch html element
+            var processingInstance = function getProcessingSketchId () { return 'toh'; }
+            
+            var editor = CodeMirror.fromTextArea(document.getElementById("codeInputPane"), {
+            mode: "javascript",
+            theme: "neat",
+            autofocus: true,
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            gutters: ["CodeMirror-lint-markers"],
+            lint: true
+            });
+            
+         
+            function run(){
+                var content = editor.getValue();        
+                var result = eval(content);
+                var logOfConsole = [];
+
+                var _log = console.log,
+                _warn = console.warn,
+                _error = console.error;
+
+                function outputArguments(arguments, type)
+                {
+                outputBox = document.getElementById('demo');
+                for(i in arguments)
+                {
+                    if(type == 0)
+                    {
+                    outputBox.innerHTML += '<p class="consoleLog">'+(arguments[i])+'</p>';
+                    }
+                    else if (type == 1)
+                    {
+                    outputBox.innerHTML += '<p class="consoleWarn">'+(arguments[i])+'</p>'; 
+                    }
+                    else
+                    {
+                    outputBox.innerHTML += '<p class="consoleError">'+(arguments[i])+'</p>';
+                    }
+                }
+            }
+
+            console.log = function() {
+                outputArguments(arguments, 0);
+                logOfConsole.push({method: 'log', arguments:arguments});
+                return _log.apply(console, arguments);
+            };
+
+            console.warn = function() {
+                outputArguments(arguments, 1);
+                logOfConsole.push({method: 'warn', arguments: arguments});
+                return _warn.apply(console, arguments);
+            };
+
+            console.error = function() {
+                outputArguments(arguments, 2);
+                logOfConsole.push({method: 'error', arguments: arguments});
+                return _error.apply(console, arguments);
+            };
+
+            window.onerror = function (msg, url, line) {
+                console.error("Caught[via window.onerror]: '" + msg + "' from " + url + ":" + line);
+                return true; // same as preventDefault
+                };
+                
+            }
+          
+            </script>
+            
+            <div id="demo"  style="width:10;height:10;overflow-y:scroll"></div>
+            </article>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="js/ui.js"></script>
+
+
+</body>
+</html>

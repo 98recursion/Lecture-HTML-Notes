@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A layout example with a side menu that hides on mobile, just like the Pure website.">
+
+    <title>Recursion: Palindromes</title>
+
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure.css">
+
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/layouts/side-menu.css">
+    <!--<![endif]-->
+     
+
+</head>
+<body>
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu pure-menu-open">
+            <a class="pure-menu-heading" href="#">Recursion</a>
+
+            <ul>
+                <li><a href="./introduction.html">Introduction</a></li>
+                <li><a href="./factorials.html">Example: Factorials</a></li>
+                <li><a href="./palindromes.html">Example: Palindromes</a></li>
+                <li><a href="./98CodeMirror/codemirror-3.21/demo/TohWithCode.html">Challenge: Towers of Hanoi</a></li>
+                <li><a href="./mergesort.html">Challenge: Merge Sort</a></li>
+                <li class="menu-item-divided pure-menu-selected">
+                	<a href="./whyrecursion.html">Why Recursion?</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>Why Recursion?</h1>
+        </div>
+
+        <div class="content">
+
+        <p>
+            Sometimes a problem is too difficult or too complex to solve because it is too big. If the problem can be broken down into smaller versions of itself, we may be able to find a way to solve one of these smaller versions and then be able to build up to a solution to the entire problem. This is the idea behind recursion; recursive algorithms break down a problem into smaller pieces which you either already know the answer to, or can solve by applying the same algorithm to each piece, and then combining the results.
+        </p>
+
+        <p>
+            There are two situations where recursion is the best solution:
+        </p>
+        <p>
+            The problem is much more clearly solved using recursion: there are many problems where the recursive solution is clearer, cleaner, and much more understandable. As long as the efficiency is not the primary concern, or if the efficiencies of the various solutions are comparable, then you should use the recursive solution.
+        </p>
+        <p>
+            Some problems are much easier to solve through recursion: there are some problems which do not have an easy iterative solution. Here you should use recursion. The Towers of Hanoi problem is an example of a problem where an iterative solution would be very difficult.
+        </p>
+        <p>
+            Recursion turns out to be a wonderful technique for dealing with many interesting problems. Solutions written recursively are often simple. Recursive solutions are also often much easier to conceive of and code than their iterative counterparts.
+        </p>
+        </div>
+    </div>
+
+     
+</div>
+
+
+<script src="js/ui.js"></script>
+
+
+</body>
+</html>
